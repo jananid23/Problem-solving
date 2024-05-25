@@ -13,7 +13,7 @@ Output: 3
 
 SOLUTION:
 
-n = int(input("enter input"))
+n = input("enter input")
 result_list = []
 temp = ''
 
