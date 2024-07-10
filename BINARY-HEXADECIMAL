@@ -2,7 +2,7 @@
 #include <string.h>
 
 // Function to convert a 4-bit binary string to a hexadecimal digit
-void binaryToHexDigit(char *bin) {
+void binaryToHexDigit(char bin[]) {
     if (strcmp(bin, "0000") == 0) printf("0");
     else if (strcmp(bin, "0001") == 0) printf("1");
     else if (strcmp(bin, "0010") == 0) printf("2");
