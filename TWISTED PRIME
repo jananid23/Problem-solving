@@ -1,0 +1,54 @@
+Given a number N. Check whether N is a Twisted Prime number or not.
+Note: A number is called Twisted Prime if it is a prime and its reverse is also a prime.
+Example 1:
+Input: N = 97
+Output: 1
+Explanation: 97 is a prime number. Its 
+reverse 79 isalso a prime number. Thus 
+97 is a  twisted Prime and so, answer is 1.
+Example 2:
+Input: N = 43
+Output: 0
+Explanation: 43 is a prime number but its 
+reverse 34 is not a prime.So, 43 is not a 
+twisted prime and thus, answer is 0.
+
+SOLUTION:
+
+#include<stdio.h>
+#include<stdbool.h>
+bool prime(int n){
+    for(int i=2;i<n;i++){
+        if(n%i==0){
+            return false;
+        }
+    }
+    return true;
+}
+bool reverse(int num){
+    int rev=0;
+    while(num){
+        int d=num%10;
+        rev=(rev*10)+d;
+        num=num/10;
+
+    }
+    if(prime(rev)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+int main(){
+    int no;
+    printf("enter number");
+    scanf("%d",&no);
+    if(prime(no) && reverse(no)){
+        printf("1");
+    }
+    else{
+        printf("0");
+    }
+    return 0;
+}
