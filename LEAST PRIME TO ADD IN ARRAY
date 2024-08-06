@@ -1,0 +1,53 @@
+Find the least prime number that can be added with first array element that makes them divisible by second array elements at respective index.
+
+SOLUTION:
+
+#include <stdio.h>
+#include <stdbool.h>
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i  < num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+int nextPrime(int num) {
+    while (!isPrime(num)) {
+        num++;
+    }
+    return num;
+}
+int findLeastPrimeToAdd(int firstElement, int secondElement) {
+    int primeToAdd = 2;
+
+    while (1) {
+        int newElement = firstElement + primeToAdd;
+        if (newElement % secondElement == 0) {
+            return primeToAdd;
+        }
+        primeToAdd = nextPrime(primeToAdd + 1);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter the size of the arrays: ");
+    scanf("%d", &n);
+    int firstArray[n];
+    int secondArray[n];
+    printf("Enter the elements of the first array: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &firstArray[i]);
+    }
+    printf("Enter the elements of the second array: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &secondArray[i]);
+    }
+    for (int i = 0; i < n; i++) {
+        int result = findLeastPrimeToAdd(firstArray[i], secondArray[i]);
+        printf("Least prime number to add for index %d: %d\n", i, result);
+    }
+
+    return 0;
+}
+
